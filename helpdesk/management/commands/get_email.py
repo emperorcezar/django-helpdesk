@@ -77,7 +77,7 @@ def process_queue(q, quiet=False):
     if not quiet:
         print "Processing: %s" % q
 
-    email_box_type = settings.QUEUE_EMAIL_BOX_TYPE if settings.QUEUE_EMAIL_BOX_TYPE else q.email_box_type
+    email_box_type = settings.QUEUE_EMAIL_BOX_TYPE if getattr(settings, 'QUEUE_EMAIL_BOX_TYPE', None) else q.email_box_type
 
     if email_box_type == 'pop3':
 
